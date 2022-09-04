@@ -1,0 +1,64 @@
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "eslint:recommended",
+        "standard"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "standard/no-callback-literal": 0,
+        "comma-dangle": ["error", "always-multiline"],
+        "camelcase": ["error", {
+            "properties": "always",
+            "ignoreDestructuring": false,
+            "ignoreImports": true,
+            "ignoreGlobals": false
+        }],
+        "space-before-function-paren": ["error", "never"],
+        "multiline-ternary": ["error", "never"],
+        "react/jsx-no-target-blank": ["error", {
+            "allowReferrer": false,
+            "enforceDynamicLinks": "never",
+            "warnOnSpreadAttributes": false,
+            "links": false,
+            "forms": true
+        }],
+        "sort-imports": ["error", {
+            "ignoreCase": true,
+            "ignoreDeclarationSort": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["all", "none", "single", "multiple"],
+            "allowSeparatedGroups": true
+        }]
+    },
+    "overrides": [{
+        "files": ["*.ts", "*.tsx"],
+        "rules": {
+            "no-undef": "off"
+        }
+    }]
+}

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+BLUE='\033[1;34m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+## this will retrieve all of the .js files that have been
+## changed since the last commit
+STAGED_JS_FILES=$(git diff --cached --name-only -- '*.js')
+
+## we can check to see if this is empty
+if [[ $STAGED_JS_FILES == "" ]]; then
+  echo "${GREEN}No JS Files to Update${NC}"
+## otherwise we can do stuff with these changed go files
+else
+  echo "${BLUE}Formatting staged js files...${NC}"
+  for file in $STAGED_JS_FILES; do
+    ## format our file
+    ./node_modules/.bin/prettier --write --loglevel error --config .prettierrc.js $file
+    ./node_modules/.bin/eslint --fix $file
+    ## add any potential changes from our formatting to the
+    ## commit
+    git add $file
+  done
+  echo "${GREEN}Completed Formatting staged js files${NC}"
+fi
+
+## this will retrieve all of the .tsx files that have been
+## changed since the last commit
+STAGED_TSX_FILES=$(git diff --cached --name-only -- '*.tsx')
+
+## we can check to see if this is empty
+if [[ $STAGED_TSX_FILES == "" ]]; then
+  echo "${GREEN}No TSX Files to Update${NC}"
+## otherwise we can do stuff with these changed go files
+else
+  echo "${BLUE}Formatting staged tsx files...${NC}"
+  for file in $STAGED_TSX_FILES; do
+    ## format our file
+    ./node_modules/.bin/prettier --write --loglevel error --config .prettierrc.js $file
+    ./node_modules/.bin/eslint --fix $file
+    ## add any potential changes from our formatting to the
+    ## commit
+    git add $file
+  done
+  echo "${GREEN}Completed Formatting staged tsx files${NC}"
+fi
+
+echo "${BLUE}Check the whole project${NC}"
+find src -name "*.js" -exec ./node_modules/.bin/eslint '{}' +
+find src -name "*.tsx" -exec ./node_modules/.bin/eslint '{}' +
+echo "${GREEN}Completed Check, commiting...${NC}"
+echo "${GREEN}(୨୧•͈ᴗ•͈)◞ᵗʱᵃᵑᵏઽ*♡${NC}"
