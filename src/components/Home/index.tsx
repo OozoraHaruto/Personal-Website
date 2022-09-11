@@ -1,5 +1,5 @@
+import { Box } from '@mui/joy';
 import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { Sheet } from '@mui/joy';
 import React, { useEffect, useState } from 'react';
 
 import CertificateView from './Certification';
@@ -81,7 +81,7 @@ export const Home = () => {
       <SchoolWrapper />
       <HomeSplit>
         <SkillWrapper />
-        <Sheet
+        <Box
           sx={{
             width: '100%',
             flexDirection: 'column',
@@ -91,7 +91,7 @@ export const Home = () => {
         >
           <CertificateWrapper />
           <LanguageWrapper />
-        </Sheet>
+        </Box>
       </HomeSplit>
     </ContainerCenter>
   );
