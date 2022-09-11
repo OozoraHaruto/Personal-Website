@@ -317,6 +317,13 @@ export const HomeSplit = (props: BoxProps) => (
         gap: 2,
         alignItems: 'flex-start',
         width: '100%',
+        flexWrap: {
+          xs: 'wrap',
+          sm: 'wrap',
+          md: 'wrap',
+          lg: 'nowrap',
+          xl: 'nowrap',
+        },
       },
       ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
     ]}
