@@ -6,6 +6,21 @@ export interface Certificate {
   date: Timestamp;
 }
 
+export interface Project {
+  id: string;
+  name: string;
+  desc: string;
+  languages: string[];
+  'last Updated': Timestamp;
+  links: ProjectLinks[];
+  haveImage: boolean;
+}
+
+interface ProjectLinks {
+  name: string;
+  url: string;
+}
+
 export interface School {
   id: string;
   cert: string;
@@ -33,19 +48,4 @@ export interface SchoolCCA {
   id: string;
   club: string;
   status: string;
-}
-
-export interface Project {
-  id: string;
-  name: string;
-  desc: string;
-  languages: string[];
-  'last Updated': Timestamp;
-  links: ProjectLinks[];
-  haveImage: boolean;
-}
-
-interface ProjectLinks {
-  name: string;
-  url: string;
 }
