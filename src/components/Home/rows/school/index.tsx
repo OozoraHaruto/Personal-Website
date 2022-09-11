@@ -67,9 +67,9 @@ export const SchoolRow = ({
       <SectionCardRowHeaderWImage>
         <AspectRatio
           ratio="1"
+          variant="plain"
           sx={{
             width: 120,
-            backgroundColor: 'transparent',
           }}
           objectFit="contain"
         >
