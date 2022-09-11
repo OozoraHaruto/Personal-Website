@@ -21,6 +21,10 @@ export const renderDate = (timeFrom: Timestamp, timeTo: Timestamp) => {
   return `${moment.unix(timeFrom.seconds).format(dateFormat)} - ${strTimeTo}`;
 };
 
+export const renderDateSingle = (date: Timestamp) => {
+  return moment.unix(date.seconds).format(dateFormat);
+};
+
 export const getURLIcon = (urlName: string) => {
   switch (urlName) {
     case 'GitHub (iOS)':

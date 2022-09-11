@@ -3,6 +3,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
 import React, { useMemo, useState } from 'react';
 
+import { LoadingPlaceholderViewType } from '../interface';
 import LoadingScreen from '../../Others/LoadingScreen';
 import {
   SectionCard,
@@ -17,19 +18,20 @@ export const LoadingPlaceholder =
   (
     icon: IconDefinition,
     title: string,
+    viewType: LoadingPlaceholderViewType,
     state: Array<any> | undefined,
-    maxRow: number,
+    maxRow: number = -1,
   ) =>
     (WrappedComponent: React.ComponentType<any>) => {
       const [showingOverflow, setShowingOverflow] = useState(false);
       const fixedData = useMemo(
         () =>
-          state ? state.length >= maxRow ? state.slice(0, maxRow) : undefined : undefined,
+          maxRow > 0 ? state ? state.length >= maxRow ? state.slice(0, maxRow) : [] : undefined : undefined,
         [state],
       );
       const hiddenData = useMemo(
         () =>
-          state ? state.length >= maxRow ? state.slice(maxRow) : undefined : undefined,
+          maxRow > 0 ? state ? state.length >= maxRow ? state.slice(maxRow) : [] : undefined : undefined,
         [state],
       );
 
@@ -76,8 +78,16 @@ export const LoadingPlaceholder =
           </SectionCardHeaderTitle>
         </SectionCardHeader>
         <SectionCardBody>
-          {state ? <RenderRows /> : <LoadingScreen />}
-          {state && state.length > maxRow && <ShowMoreView />}
+          {state ? (
+            viewType === LoadingPlaceholderViewType.Rows ? (
+              <RenderRows />
+            ) : (
+              <WrappedComponent data={state} />
+            )
+          ) : (
+            <LoadingScreen />
+          )}
+          {maxRow > 0 && state && state.length > maxRow && <ShowMoreView />}
         </SectionCardBody>
       </SectionCard>
       );

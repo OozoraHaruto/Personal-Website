@@ -8,7 +8,29 @@ import {
   QuerySnapshot,
 } from 'firebase/firestore/lite';
 
-import { Project, School, SchoolCCA, SchoolSubjectWrapper } from './interfaces';
+import {
+  Certificate,
+  Project,
+  School,
+  SchoolCCA,
+  SchoolSubjectWrapper,
+} from './interfaces';
+
+export const getCertifications = () => {
+  const col = collection(db, 'certifications');
+  const ref = query(col, orderBy('name', 'asc'));
+  const certs: Certificate[] = [];
+
+  return getDocs(ref).then(snapshot => {
+    snapshot.forEach(certSnapshot => {
+      const cert: Certificate = certSnapshot.data() as Certificate;
+      cert.id = certSnapshot.id;
+      certs.push(cert);
+    });
+
+    return certs;
+  });
+};
 
 export const getSchools = () => {
   const col = collection(db, 'school');

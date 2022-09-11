@@ -1,5 +1,11 @@
 import { Timestamp } from 'firebase/firestore/lite'
 
+export interface Certificate {
+  id: string;
+  name: string;
+  date: Timestamp;
+}
+
 export interface School {
   id: string;
   cert: string;

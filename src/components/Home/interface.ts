@@ -4,4 +4,9 @@ export const enum SchoolHiddenData {
   Subjects,
   CCAs,
 }
+
+export const enum LoadingPlaceholderViewType {
+  Rows = 0,
+  ViewWrapper,
+}
 /* eslint-enable */

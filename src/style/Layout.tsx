@@ -305,3 +305,20 @@ export const ProjectCardSectionButton = (props: ButtonProps) => (
     ]}
   />
 );
+
+export const HomeSplit = (props: BoxProps) => (
+  <Box
+    {...props}
+    sx={[
+      {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'left',
+        gap: 2,
+        alignItems: 'flex-start',
+        width: '100%',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
