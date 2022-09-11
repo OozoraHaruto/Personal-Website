@@ -10,6 +10,7 @@ import {
 
 import {
   Certificate,
+  Language,
   Project,
   School,
   SchoolCCA,
@@ -46,6 +47,22 @@ export const getProjects = () => {
     });
 
     return projects;
+  });
+};
+
+export const getLanguages = () => {
+  const col = collection(db, 'language');
+  const ref = query(col, orderBy('listen', 'desc'));
+  const languages: Language[] = [];
+
+  return getDocs(ref).then(snapshot => {
+    snapshot.forEach(languageSnapshot => {
+      const language: Language = languageSnapshot.data() as Language;
+      language.id = languageSnapshot.id;
+      languages.push(language);
+    });
+
+    return languages;
   });
 };
 

@@ -56,3 +56,11 @@ export interface Skill {
   iconName: string;
   proficiency: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 }
+
+export interface Language {
+  id: string;
+  name: string;
+  listen: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  speak: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  write: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+}

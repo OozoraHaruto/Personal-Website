@@ -322,3 +322,37 @@ export const HomeSplit = (props: BoxProps) => (
     ]}
   />
 );
+
+export const LanguageTableRows = (props: BoxProps) => (
+  <Box
+    component="div"
+    {...props}
+    sx={[
+      {
+        p: 1,
+        gap: 2,
+        bgcolor: 'background.componentBg',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const LanguageTableRowCell = (props: TypographyProps) => (
+  <Typography
+    component="div"
+    {...props}
+    sx={[
+      {
+        width: '25%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1.5,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
