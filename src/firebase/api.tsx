@@ -8,7 +8,7 @@ import {
   QuerySnapshot,
 } from 'firebase/firestore/lite';
 
-import { School, SchoolCCA, SchoolSubjectWrapper } from './interfaces';
+import { Project, School, SchoolCCA, SchoolSubjectWrapper } from './interfaces';
 
 export const getSchools = () => {
   const col = collection(db, 'school');
@@ -67,4 +67,20 @@ export const getSchools = () => {
 
       return schools;
     });
+};
+
+export const getProjects = () => {
+  const col = collection(db, 'projects');
+  const ref = query(col, orderBy('last Updated', 'desc'));
+  const projects: Project[] = [];
+
+  return getDocs(ref).then(snapshot => {
+    snapshot.forEach(projectSnapshot => {
+      const project: Project = projectSnapshot.data() as Project;
+      project.id = projectSnapshot.id;
+      projects.push(project);
+    });
+
+    return projects;
+  });
 };

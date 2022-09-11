@@ -1,6 +1,8 @@
 import React from 'react';
 import Box, { BoxProps } from '@mui/joy/Box';
+import Button, { ButtonProps } from '@mui/joy/Button';
 import Card, { CardProps } from '@mui/joy/Card';
+import Chip, { ChipProps } from '@mui/joy/Chip';
 import Link, { LinkProps } from '@mui/joy/Link';
 import Sheet, { SheetProps } from '@mui/joy/Sheet';
 import Typography, { TypographyProps } from '@mui/joy/Typography';
@@ -273,6 +275,31 @@ export const SectionCardRowHeaderWImage = (props: BoxProps) => (
         gap: 2,
         alignItems: 'flex-start',
         width: '100%',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const ProjectCardSectionChip = (props: ChipProps) => (
+  <Chip
+    variant="soft"
+    size="sm"
+    {...props}
+    sx={[...(Array.isArray(props.sx) ? props.sx : [props.sx])]}
+  />
+);
+
+export const ProjectCardSectionButton = (props: ButtonProps) => (
+  <Button
+    variant="plain"
+    component="a"
+    target="_blank"
+    size="sm"
+    {...props}
+    sx={[
+      {
+        gap: 1,
       },
       ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
     ]}
