@@ -1,8 +1,12 @@
-import * as React from 'react';
+import React from 'react';
+import Box, { BoxProps } from '@mui/joy/Box';
+import Card, { CardProps } from '@mui/joy/Card';
+import Link, { LinkProps } from '@mui/joy/Link';
 import Sheet, { SheetProps } from '@mui/joy/Sheet';
+import Typography, { TypographyProps } from '@mui/joy/Typography';
 
-export const Root = (props: SheetProps) => (
-  <Sheet
+export const Root = (props: BoxProps) => (
+  <Box
     {...props}
     sx={[
       {
@@ -42,8 +46,8 @@ export const Header = (props: SheetProps) => (
   />
 );
 
-export const SheetFloatCenterWrapper = (props: SheetProps) => (
-  <Sheet
+export const BoxFloatCenterWrapper = (props: BoxProps) => (
+  <Box
     component="div"
     {...props}
     sx={[
@@ -62,8 +66,8 @@ export const SheetFloatCenterWrapper = (props: SheetProps) => (
   />
 );
 
-export const SheetFloatCenterSheet = (props: SheetProps) => (
-  <Sheet
+export const BoxFloatCenterBox = (props: BoxProps) => (
+  <Box
     component="div"
     {...props}
     sx={[
@@ -82,114 +86,195 @@ export const SheetFloatCenterSheet = (props: SheetProps) => (
   />
 );
 
-export const Grid3 = (props: SheetProps) => (
-  <Sheet
-    {...props}
-    sx={[
-      {
-        bgcolor: 'background.appBody',
-        display: 'grid',
-        gridTemplateColumns: {
-          xs: '1fr',
-          sm: 'minmax(64px, 200px) minmax(450px, 1fr)',
-          md: 'minmax(160px, 300px) minmax(300px, 500px) minmax(500px, 1fr)',
-        },
-        gridTemplateRows: '64px 1fr',
-        minHeight: '100vh',
-      },
-      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
-    ]}
-  />
-);
-
-export const SideNav = (props: SheetProps) => (
-  <Sheet
-    component="nav"
-    className="Navigation"
-    {...props}
+export const ContainerCenter = (props: BoxProps) => (
+  <Box
+    component="div"
     sx={[
       {
         p: 2,
+        gap: 2,
         bgcolor: 'background.componentBg',
-        borderRight: '1px solid',
-        borderColor: 'divider',
-        display: {
-          xs: 'none',
-          sm: 'initial',
-        },
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gridColumn: '1 / -1',
       },
-      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
-    ]}
-  />
-);
-
-export const SidePane = (props: SheetProps) => (
-  <Sheet
-    className="Inbox"
-    {...props}
-    sx={[
-      {
-        bgcolor: 'background.componentBg',
-        borderRight: '1px solid',
-        borderColor: 'divider',
-        display: {
-          xs: 'none',
-          md: 'initial',
-        },
-      },
-      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
-    ]}
-  />
-);
-
-export const Main = (props: SheetProps) => (
-  <Sheet
-    component="main"
-    className="Main"
-    {...props}
-    sx={[{ p: 2 }, ...(Array.isArray(props.sx) ? props.sx : [props.sx])]}
-  />
-);
-
-export const SideDrawer = ({
-  onClose,
-  ...props
-}: SheetProps & { onClose: React.MouseEventHandler<HTMLDivElement> }) => (
-  <Sheet
-    {...props}
-    sx={[
-      { position: 'fixed', zIndex: 1200, width: '100%', height: '100%' },
-      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
     ]}
   >
-    <Sheet
-      role="button"
-      onClick={onClose}
-      sx={{
-        position: 'absolute',
-        inset: 0,
-        bgcolor: theme =>
-          `rgba(${theme.vars.palette.neutral.darkChannel} / 0.8)`,
-      }}
+    <Box
+      component="div"
+      {...props}
+      sx={[
+        {
+          gap: 2,
+          bgcolor: 'background.componentBg',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          gridColumn: '1 / -1',
+          width: {
+            xs: '100%',
+            sm: 540,
+            md: 720,
+            lg: 960,
+            xl: 1140,
+          },
+        },
+        ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+      ]}
     />
-    <Sheet
-      sx={{
-        minWidth: 256,
-        width: 'max-content',
-        height: '100%',
-        p: 2,
-        boxShadow: 'lg',
-        bgcolor: 'background.componentBg',
-      }}
-    >
-      {props.children}
-    </Sheet>
-  </Sheet>
+  </Box>
 );
 
-export default {
-  SideNav,
-  SidePane,
-  SideDrawer,
-  Main,
-};
+export const SectionCard = (props: CardProps) => (
+  <Card
+    variant="outlined"
+    {...props}
+    sx={[
+      {
+        p: 0,
+        width: '100%',
+        '--Card-radius': theme => theme.vars.radius.sm,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardHeader = (props: SheetProps) => (
+  <Sheet
+    component="div"
+    color="primary"
+    variant="soft"
+    {...props}
+    sx={[
+      {
+        p: 1.5,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        gap: 1,
+        alignItems: 'center',
+        borderTopRightRadius: theme => theme.vars.radius.sm,
+        borderTopLeftRadius: theme => theme.vars.radius.sm,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardHeaderTitle = (props: TypographyProps) => (
+  <Typography
+    level="body1"
+    {...props}
+    sx={[
+      {
+        fontWeight: 'light',
+        display: 'flex',
+        gap: 1,
+        alignItems: 'center',
+        fontSize: theme => theme.vars.fontSize.lg,
+        color: theme => theme.vars.palette.primary.softColor,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardBody = (props: BoxProps) => (
+  <Box
+    {...props}
+    sx={[
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        gap: 1,
+        alignItems: 'stretch',
+        width: '100%',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardRow = (props: BoxProps) => (
+  <Box
+    {...props}
+    sx={[
+      {
+        p: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'left',
+        gap: 1,
+        alignItems: 'center',
+        transition: 'all 1s',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardShowMore = (props: SheetProps) => (
+  <Sheet
+    component="div"
+    color="primary"
+    variant="soft"
+    {...props}
+    sx={[
+      {
+        p: 1.5,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: 1,
+        alignItems: 'center',
+        transition: 'all 1s',
+        borderBottomRightRadius: theme => theme.vars.radius.sm,
+        borderBottomLeftRadius: theme => theme.vars.radius.sm,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardShowMoreTitle = (props: LinkProps) => (
+  <Link
+    level="body1"
+    overlay
+    {...props}
+    sx={[
+      {
+        fontWeight: 'light',
+        display: 'flex',
+        gap: 1,
+        alignItems: 'center',
+        textDecorationColor: theme => theme.vars.palette.primary.softColor,
+        color: theme => theme.vars.palette.primary.softColor,
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);
+
+export const SectionCardRowHeaderWImage = (props: BoxProps) => (
+  <Box
+    {...props}
+    sx={[
+      {
+        px: 2,
+        py: 0.5,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'left',
+        gap: 2,
+        alignItems: 'flex-start',
+        width: '100%',
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
+  />
+);

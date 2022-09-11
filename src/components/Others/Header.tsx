@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
 import React from 'react';
-import { Button, Sheet } from '@mui/joy';
+import { Box, Button } from '@mui/joy';
 import { NavLink, Outlet } from 'react-router-dom';
 
 import { Header, Root } from '../../style/Layout';
@@ -35,7 +35,7 @@ const Wrapper = () => {
     <React.Fragment>
       <Root>
         <Header>
-          <Sheet
+          <Box
             sx={{
               display: 'flex',
               flexDirection: 'row',
@@ -44,7 +44,7 @@ const Wrapper = () => {
             }}
           >
             <NavBarLink title="Home" startIcon={light('home')} to="/" />
-          </Sheet>
+          </Box>
         </Header>
 
         <Outlet />

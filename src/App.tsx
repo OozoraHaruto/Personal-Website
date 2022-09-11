@@ -6,6 +6,7 @@ import './App.scss';
 
 import Error404 from './components/Others/Error404';
 import Header from './components/Others/Header';
+import Home from './components/Home';
 import mainTheme from './style/theme';
 import { ThemeProvider } from './Helpers/Theme';
 
@@ -51,6 +52,8 @@ function App() {
       <ThemeProvider>
         <Routes>
           <Route path="/" element={<Header />}>
+            <Route index element={<Home />} />
+
             <Route path="*" element={<Error404 />} />
           </Route>
         </Routes>

@@ -2,18 +2,15 @@ import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Typography } from '@mui/joy';
 
-import {
-  SheetFloatCenterSheet,
-  SheetFloatCenterWrapper,
-} from '../../style/Layout';
+import { BoxFloatCenterBox, BoxFloatCenterWrapper } from '../../style/Layout';
 
 const Error404 = () => {
   const history = createBrowserHistory();
   const { pathname, search, hash } = history.location;
 
   return (
-    <SheetFloatCenterWrapper>
-      <SheetFloatCenterSheet component="div">
+    <BoxFloatCenterWrapper>
+      <BoxFloatCenterBox component="div">
         <Typography>
           <Typography sx={{ paddingRight: 1 }} level="display2">
             404.
@@ -29,8 +26,8 @@ const Error404 = () => {
           </Typography>{' '}
           was not found on this server. That&apos;s all we know.
         </Typography>
-      </SheetFloatCenterSheet>
-    </SheetFloatCenterWrapper>
+      </BoxFloatCenterBox>
+    </BoxFloatCenterWrapper>
   );
 };
 

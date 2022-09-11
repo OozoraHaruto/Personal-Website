@@ -15,6 +15,7 @@ const getBrowserTheme = () => {
   return mql && mql.matches ? 'dark' : 'light';
 };
 
+// eslint-disable-next-line
 const onBrowserThemeChanged = (callBack: Function) => {
   const mql = getMql();
   const mqlListener = (e: MediaQueryListEvent) =>
