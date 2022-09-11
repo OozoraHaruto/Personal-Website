@@ -14,6 +14,7 @@ import {
   School,
   SchoolCCA,
   SchoolSubjectWrapper,
+  Skill,
 } from './interfaces';
 
 export const getCertifications = () => {
@@ -105,4 +106,20 @@ export const getSchools = () => {
 
       return schools;
     });
+};
+
+export const getSkills = () => {
+  const col = collection(db, 'skills');
+  const ref = query(col, orderBy('name', 'asc'));
+  const skills: Skill[] = [];
+
+  return getDocs(ref).then(snapshot => {
+    snapshot.forEach(certSnapshot => {
+      const skill: Skill = certSnapshot.data() as Skill;
+      skill.id = certSnapshot.id;
+      skills.push(skill);
+    });
+
+    return skills;
+  });
 };

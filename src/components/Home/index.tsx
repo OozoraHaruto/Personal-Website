@@ -7,21 +7,29 @@ import LoadingPlaceholder from './shared/LoadingPlaceholder';
 import { LoadingPlaceholderViewType } from './interface';
 import ProjectRow from './rows/project';
 import SchoolRow from './rows/school';
-import { Certificate, Project, School } from '../../firebase/interfaces';
+import SkillChip from './rows/SkillChip';
+import { Certificate, Project, School, Skill } from '../../firebase/interfaces';
 import { ContainerCenter, HomeSplit } from '../../style/Layout';
-import { getCertifications, getProjects, getSchools } from '../../firebase/api';
+import {
+  getCertifications,
+  getProjects,
+  getSchools,
+  getSkills,
+} from '../../firebase/api';
 
 export const Home = () => {
   const [certificates, setCertificates] = useState<Certificate[] | undefined>(
     undefined,
   );
-  const [schools, setSchools] = useState<School[] | undefined>(undefined);
   const [projects, setProjects] = useState<Project[] | undefined>(undefined);
+  const [schools, setSchools] = useState<School[] | undefined>(undefined);
+  const [skills, setSkills] = useState<Skill[] | undefined>(undefined);
 
   useEffect(() => {
     getCertifications().then(data => setCertificates(data));
-    getSchools().then(data => setSchools(data));
     getProjects().then(data => setProjects(data));
+    getSchools().then(data => setSchools(data));
+    getSkills().then(data => setSkills(data));
   }, []);
 
   const CertificateWrapper = LoadingPlaceholder(
@@ -44,12 +52,19 @@ export const Home = () => {
     schools,
     1,
   )(SchoolRow);
+  const SkillWrapper = LoadingPlaceholder(
+    light('hand-paper'),
+    'Skills',
+    LoadingPlaceholderViewType.ViewWrapper,
+    skills,
+  )(SkillChip);
 
   return (
     <ContainerCenter>
       <ProjectWrapper />
       <SchoolWrapper />
       <HomeSplit>
+        <SkillWrapper />
         <Sheet sx={{ width: '100%' }}>
           <CertificateWrapper />
         </Sheet>
