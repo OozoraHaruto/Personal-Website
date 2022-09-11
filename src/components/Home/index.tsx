@@ -7,7 +7,7 @@ import LoadingPlaceholder from './shared/LoadingPlaceholder';
 import { LoadingPlaceholderViewType } from './interface';
 import ProjectRow from './rows/project';
 import SchoolRow from './rows/school';
-import SkillChip from './rows/SkillChip';
+import SkillChip from './rows/skill';
 import { Certificate, Project, School, Skill } from '../../firebase/interfaces';
 import { ContainerCenter, HomeSplit } from '../../style/Layout';
 import {
