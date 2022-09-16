@@ -64,3 +64,14 @@ export interface Language {
   speak: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   write: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 }
+
+export interface Work {
+  id: string;
+  company: string;
+  logo: string;
+  scope: string[];
+  skills: string[];
+  timeFrom: Timestamp;
+  timeTo: Timestamp | undefined;
+  title: string;
+}

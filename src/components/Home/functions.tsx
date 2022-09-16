@@ -13,14 +13,19 @@ import {
   faJava,
   faNodeJs,
   faPhp,
+  faPython,
+  faReact,
   faSquareJs,
   faSwift,
 } from '@fortawesome/free-brands-svg-icons';
 
 const dateFormat = 'MMMM YYYY';
 
-export const renderDate = (timeFrom: Timestamp, timeTo: Timestamp) => {
-  const strTimeTo = moment.unix(timeTo.seconds).format(dateFormat);
+export const renderDate = (
+  timeFrom: Timestamp,
+  timeTo: Timestamp | undefined,
+) => {
+  const strTimeTo = timeTo ? moment.unix(timeTo.seconds).format(dateFormat) : 'current';
   return `${moment.unix(timeFrom.seconds).format(dateFormat)} - ${strTimeTo}`;
 };
 
@@ -99,6 +104,10 @@ export const getProgrammingLanguageIcon = (name: string) => {
       return <FontAwesomeIcon icon={faNodeJs} />;
     case 'PHP':
       return <FontAwesomeIcon icon={faPhp} />;
+    case 'Python':
+      return <FontAwesomeIcon icon={faPython} />;
+    case 'React.js':
+      return <FontAwesomeIcon icon={faReact} />;
     case 'Swift':
     case 'SwiftUI':
       return <FontAwesomeIcon icon={faSwift} />;

@@ -2,7 +2,7 @@ import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro';
 import React from 'react';
 import { AspectRatio, Box, Card, Typography } from '@mui/joy';
 
-import CardSection from './CardSection';
+import CardSection from '../shared/CardSection';
 import { Project } from '../../../../firebase/interfaces';
 import { getProgrammingLanguageIcon, getURLIcon } from '../../functions';
 import {

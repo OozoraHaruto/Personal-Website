@@ -9,12 +9,14 @@ import { LoadingPlaceholderViewType } from './interface';
 import ProjectRow from './rows/project';
 import SchoolRow from './rows/school';
 import SkillChip from './rows/skill';
+import WorkRow from './rows/work';
 import {
   Certificate,
   Language,
   Project,
   School,
   Skill,
+  Work,
 } from '../../firebase/interfaces';
 import { ContainerCenter, HomeSplit } from '../../style/Layout';
 import {
@@ -23,6 +25,7 @@ import {
   getProjects,
   getSchools,
   getSkills,
+  getWork,
 } from '../../firebase/api';
 
 export const Home = () => {
@@ -33,6 +36,7 @@ export const Home = () => {
   const [projects, setProjects] = useState<Project[] | undefined>(undefined);
   const [schools, setSchools] = useState<School[] | undefined>(undefined);
   const [skills, setSkills] = useState<Skill[] | undefined>(undefined);
+  const [work, setWork] = useState<Work[] | undefined>(undefined);
 
   useEffect(() => {
     getCertifications().then(data => setCertificates(data));
@@ -40,6 +44,7 @@ export const Home = () => {
     getProjects().then(data => setProjects(data));
     getSchools().then(data => setSchools(data));
     getSkills().then(data => setSkills(data));
+    getWork().then(data => setWork(data));
   }, []);
 
   const CertificateWrapper = LoadingPlaceholder(
@@ -74,9 +79,17 @@ export const Home = () => {
     LoadingPlaceholderViewType.ViewWrapper,
     skills,
   )(SkillChip);
+  const WorkWrapper = LoadingPlaceholder(
+    light('briefcase'),
+    'Work',
+    LoadingPlaceholderViewType.Rows,
+    work,
+    2,
+  )(WorkRow);
 
   return (
     <ContainerCenter>
+      <WorkWrapper />
       <ProjectWrapper />
       <SchoolWrapper />
       <HomeSplit>

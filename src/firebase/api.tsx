@@ -16,6 +16,7 @@ import {
   SchoolCCA,
   SchoolSubjectWrapper,
   Skill,
+  Work,
 } from './interfaces';
 
 export const getCertifications = () => {
@@ -138,5 +139,21 @@ export const getSkills = () => {
     });
 
     return skills;
+  });
+};
+
+export const getWork = () => {
+  const col = collection(db, 'work');
+  const ref = query(col, orderBy('timeFrom', 'desc'));
+  const work: Work[] = [];
+
+  return getDocs(ref).then(snapshot => {
+    snapshot.forEach(certSnapshot => {
+      const job: Work = certSnapshot.data() as Work;
+      job.id = certSnapshot.id;
+      work.push(job);
+    });
+
+    return work;
   });
 };
