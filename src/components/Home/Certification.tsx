@@ -5,7 +5,7 @@ import { Certificate } from '../../firebase/interfaces';
 import { renderDateSingle } from './functions';
 
 export const Certification = ({ data }: { data: Certificate[] }) => (
-  <List variant="outlined" sx={{ gap: 0.5 }}>
+  <List variant="plain" sx={{ gap: 0.5 }}>
     {data.map(cert => (
       <ListItem
         key={`cert-${cert.name}`}

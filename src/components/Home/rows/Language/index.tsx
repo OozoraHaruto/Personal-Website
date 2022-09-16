@@ -1,7 +1,7 @@
+import { Box } from '@mui/joy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
 import React from 'react';
-import { Sheet } from '@mui/joy';
 
 import { Language } from '../../../../firebase/interfaces';
 import LanguageRow from './LanguageRow';
@@ -11,7 +11,7 @@ import {
 } from '../../../../style/Layout';
 
 export const LanguageView = ({ data }: { data: Language[] }) => (
-  <Sheet sx={{ p: 2 }}>
+  <Box sx={{ p: 2 }}>
     <LanguageTableRows sx={{ fontWeight: 'bold' }}>
       <LanguageTableRowCell />
       <LanguageTableRowCell>
@@ -30,7 +30,7 @@ export const LanguageView = ({ data }: { data: Language[] }) => (
     {data.map(skill => (
       <LanguageRow key={`skill-${skill.id}`} {...skill} />
     ))}
-  </Sheet>
+  </Box>
 );
 
 export default LanguageView;
