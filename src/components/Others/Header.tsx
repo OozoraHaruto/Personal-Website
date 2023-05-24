@@ -23,7 +23,7 @@ const NavBarLink = ({
         size="sm"
         variant={isActive ? 'soft' : 'plain'}
         sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
-        startIcon={startIcon && <FontAwesomeIcon icon={startIcon} />}
+        startDecorator={startIcon && <FontAwesomeIcon icon={startIcon} />}
       >
         {title}
       </Button>
