@@ -12,7 +12,7 @@ export const Root = (props: BoxProps) => (
     {...props}
     sx={[
       {
-        bgcolor: 'background.appBody',
+        bgcolor: 'background.body',
         display: 'grid',
         gridTemplateRows: '64px 1fr',
         minHeight: '100vh',
@@ -31,7 +31,6 @@ export const Header = (props: SheetProps) => (
       {
         p: 2,
         gap: 2,
-        bgcolor: 'background.componentBg',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -56,7 +55,6 @@ export const BoxFloatCenterWrapper = (props: BoxProps) => (
       {
         p: 2,
         gap: 2,
-        bgcolor: 'background.componentBg',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -76,7 +74,6 @@ export const BoxFloatCenterBox = (props: BoxProps) => (
       {
         p: 2,
         gap: 2,
-        bgcolor: 'background.componentBg',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -95,7 +92,6 @@ export const ContainerCenter = (props: BoxProps) => (
       {
         p: 2,
         gap: 2,
-        bgcolor: 'background.componentBg',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -110,7 +106,6 @@ export const ContainerCenter = (props: BoxProps) => (
       sx={[
         {
           gap: 2,
-          bgcolor: 'background.componentBg',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -338,7 +333,6 @@ export const LanguageTableRows = (props: BoxProps) => (
       {
         p: 1,
         gap: 2,
-        bgcolor: 'background.componentBg',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
