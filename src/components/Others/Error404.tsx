@@ -1,12 +1,10 @@
-import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Typography } from '@mui/joy';
 
 import { BoxFloatCenterBox, BoxFloatCenterWrapper } from '../../style/Layout';
 
 const Error404 = () => {
-  const history = createBrowserHistory();
-  const { pathname, search, hash } = history.location;
+  const { pathname, search, hash } = window.location;
 
   return (
     <BoxFloatCenterWrapper>
